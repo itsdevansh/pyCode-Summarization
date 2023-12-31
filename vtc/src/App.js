@@ -42,14 +42,14 @@ function App() {
         <textarea
           value={inputText}
           onChange={handleInputChange}
-          placeholder="Enter the text you want to paraphrase"
+          placeholder="Enter the code to be summarized"
         />
         </div>
         <div className = "output-text">
         <textarea
           value={outputText}
           readOnly
-          placeholder="You will get the resulting text here after the paraphrasing tool has finished rephrasing."
+          placeholder="You will get the resulting summarization here!"
         />
         </div>
         </div>
