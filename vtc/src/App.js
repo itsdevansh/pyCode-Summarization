@@ -14,10 +14,10 @@ function App() {
     setMode(selectedMode);
   };
 
-  const handleParaphrase = () => {
+  const handleSummarization = () => {
     // Here you would call the paraphrasing API
     // For the example, we're just mocking the output
-    setOutputText(`Paraphrased (mode: ${mode}): ${inputText}`);
+    setOutputText(`Summarization (mode: ${mode}): ${inputText}`);
   };
 
   const isModeActive = (selectedMode) => {
@@ -53,7 +53,7 @@ function App() {
         />
         </div>
         </div>
-        <button onClick={handleParaphrase}>Paraphrase</button>
+        <button onClick={handleSummarization}>Generate Summary</button>
       </main>
     </div>
   );
