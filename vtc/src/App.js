@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
 import './App.css';
+import OpenAI from 'openai';
+
+const openai = new OpenAI({
+  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+  dangerouslyAllowBrowser: true
+  
+});
+
 
 function App() {
   const [inputText, setInputText] = useState('');
@@ -14,10 +22,41 @@ function App() {
     setMode(selectedMode);
   };
 
-  const handleSummarization = () => {
-    // Here you would call the paraphrasing API
-    // For the example, we're just mocking the output
-    setOutputText(`Summarization (mode: ${mode}): ${inputText}`);
+  const handleSummarization = async () => {
+    try {
+      let modelConfig;
+
+      // Set different API configurations based on the selected mode
+      const response = await openai.chat.completions.create({
+        model: "ft:gpt-3.5-turbo-1106:personal::8YcyoEOl",
+        messages: [
+          {
+            "role": "user",
+            "content": inputText,
+          }
+        ],
+        temperature: 1,
+        max_tokens: 256,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+      });
+  
+      // Check if the response contains the expected data
+      if (response.choices && response.choices[0] && response.choices[0].message) {
+        // Extract the generated summary from the API response
+        const summary = response.choices[0].message.content.trim();
+        console.log(summary);
+        setOutputText(summary);
+      } else {
+        // Handle cases where the response doesn't contain the expected data
+        console.error('Unexpected response structure:', response);
+        setOutputText('Error: Unexpected response from API');
+      }
+    } catch (error) {
+      console.error('Error calling OpenAI API:', error);
+      setOutputText(`Error: ${error.message}`);
+    }
   };
 
   const isModeActive = (selectedMode) => {

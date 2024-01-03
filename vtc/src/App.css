@@ -55,6 +55,7 @@ main {
   margin: 0; /* Reset margin */
   height: 150px; /* Fixed height */
   padding: 15px; /* More padding inside text areas */
+  resize: none;
 }
 
 button {
@@ -75,6 +76,6 @@ button:hover {
 }
 
 button.active {
-  background-color: #45a049;
+  background-color: #035907;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* More pronounced shadow for the active button */
 }
