@@ -60,44 +60,27 @@ main {
 
 .input-area textarea {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 900px; /* Adjusted width for more space */
-  margin: 10px; /* Adjusted margin for consistent spacing */
+  width: 900px; 
+  margin: 10px; 
   height: 300px;
   padding: 15px;
-  padding-left: 35px; /* Make room for line numbers */
+  padding-left: 35px; 
   resize: none;
   border: 1px solid #ddd;
   border-radius: 4px;
   transition: box-shadow 0.3s;
-  font-family: 'Courier New', monospace; /* Monospaced font for code */
-  font-size: 25px; /* Typically code editors use smaller font sizes */
+  font-family: 'Courier New', monospace; 
+  font-size: 25px; 
   color: #333;
-  background-color: #f7f7f7; /* Soft background color */
+  background-color: #f7f7f7;
   line-height: 1.5;
-  white-space: pre; /* For code formatting */
-  overflow-x: auto; /* Allows horizontal scrolling */
+  white-space: pre; 
+  overflow-x: auto; 
   position: relative;
-  tab-size: 4; /* Standard tab size for Python code */
+  tab-size: 4;
 }
 
 /* Line Numbers for the Input Area */
-.input-area::before {
-  content: attr(data-lines); /* Use an attribute for line numbers */
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 30px; /* Width for line numbers */
-  padding: 15px 5px;
-  text-align: right;
-  background-color: #eee; /* Line number column background */
-  color: #999; /* Line number color */
-  border-right: 1px solid #ddd;
-  height: 100%;
-  font-family: 'Courier New', monospace;
-  font-size: 14px;
-  line-height: 1.5;
-  overflow: hidden;
-}
 
 /* Scrollbar Styles (Optional) */
 .input-area textarea::-webkit-scrollbar {
@@ -139,17 +122,7 @@ main {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-.input-area textarea::before {
-  content: '';
-  position: absolute;
-  width: 2px;
-  height: 100%;
-  background-color: #007acc;
-  top: 0;
-  left: 15px;
-  opacity: 0.7;
-  animation: blink 1s infinite;
-}
+
 
 @keyframes blink {
   50% {
@@ -209,14 +182,44 @@ main {
 
 /* Button Handler Styles */
 
-.Button-handler {
-  display: inline-block;
-  padding-top: 20px;
-  background: linear-gradient(to right, #f8f8f8, #e0e0e0);
-  padding: 20px;
-  border-radius: 8px;
+.Button-handler button {
+  padding-left: 30px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 10px; /* Add margin to the bottom of the first button */
 }
 
+.Button-handler button:last-child {
+  margin-top: 10px; /* Add margin to the top of the second button */
+  margin-right: 0;
+}
+.output-text button {
+  padding-left: 30px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.output-text button:hover {
+  background-color: #f15959;
+  transform: translateY(-2px);
+}
+
+.output-text button.active {
+  background-color: #d14747;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 .Button-handler button {
   padding-left: 30px;
   background-color: #ff6b6b;
@@ -252,3 +255,81 @@ main {
     align-items: center;
   }
 }
+
+
+/* Dark Mode Styles */
+/* Dark Mode Styles */
+
+/* General Styles for Dark Mode */
+.App.dark-mode {
+  background-color: #222; /* Dark background for the app */
+  color: #ccc; /* Lighter text color for better readability in dark mode */
+}
+
+/* Header Styles in Dark Mode */
+.App.dark-mode .App-header {
+  background: linear-gradient(to right, #555, #333); /* Darker gradient for the header */
+  color: #fff; /* White text color for contrast */
+  border-bottom: 1px solid #444; /* Darker border color */
+}
+
+.App.dark-mode .App-header:hover {
+  background: linear-gradient(to right, #333, #555); /* Inverted gradient on hover */
+}
+
+/* Main Content Styles in Dark Mode */
+.App.dark-mode main {
+  /* No specific changes needed here unless you want different styling for main in dark mode */
+}
+
+/* Text Section Styles in Dark Mode */
+.App.dark-mode .Text {
+  background: linear-gradient(to right, #333, #444); /* Darker gradient for text sections */
+}
+
+/* Input and Output Textarea Styles in Dark Mode */
+.App.dark-mode .input-area textarea,
+.App.dark-mode .output-text textarea {
+  background-color: #333; /* Darker background for textareas */
+  color: #ddd; /* Lighter text color */
+  border: 1px solid #555; /* Darker border color */
+}
+
+/* Line Numbers for the Input Area in Dark Mode */
+.App.dark-mode .input-area::before {
+  background-color: #2a2a2a; /* Darker background for line number column */
+  color: #777; /* Lighter color for line numbers */
+}
+
+/* Scrollbar Styles in Dark Mode (Optional) */
+.App.dark-mode .input-area textarea::-webkit-scrollbar-thumb {
+  background-color: #555;
+}
+
+.App.dark-mode .input-area textarea::-webkit-scrollbar-track {
+  background-color: #2a2a2a;
+}
+
+/* Error Card Styles in Dark Mode */
+.App.dark-mode .error-card {
+  /* Adjust error card styling for dark mode if needed */
+}
+
+/* Output Textarea Placeholder and Read-only Styles in Dark Mode */
+.App.dark-mode .output-text textarea::placeholder,
+.App.dark-mode .output-text textarea:read-only {
+  /* Adjust placeholder and read-only styles for dark mode if needed */
+}
+
+/* Mode Buttons Styles in Dark Mode */
+.App.dark-mode .mode-buttons button {
+  /* Adjust button styling for dark mode if needed */
+}
+
+/* Button Handler Styles in Dark Mode */
+.App.dark-mode .Button-handler button {
+  /* Adjust button handler styling for dark mode if needed */
+}
+
+/* Adjustments for Responsive Design in Dark Mode */
+

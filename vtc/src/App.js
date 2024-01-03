@@ -13,9 +13,22 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [outputText, setOutputText] = useState('');
   const [mode, setMode] = useState('conservative');
+  const [isError, setIsError] = useState(false);
   const outputTextareaRef = useRef(null);
+  const pythonKeywords = ["def", "return", "if", "elif", "else", "for", "while", "break", "continue", "import", "from", "as", "try", "except", "finally", "class", "with", "assert", "async", "await", "print"];
   const handleInputChange = (event) => {
-    setInputText(event.target.value);
+    const code = event.target.value;
+    setInputText(code);
+    
+    // Check if the code contains Python keywords
+    const containsPythonCode = pythonKeywords.some(keyword => code.includes(keyword));
+    
+    // Basic check for Python syntax
+    if (containsPythonCode) {
+      setIsError(false);
+    } else if (code.trim() !== '') {
+      setIsError(true);
+    }
   };
   const handleReset = () => {
     setInputText('');
@@ -37,14 +50,6 @@ function App() {
 
       // Define different configurations for each mode
       switch (mode) {
-        // case 'conservative':
-        //   modelConfig = {
-        //     // Define parameters for conservative mode
-        //     temperature:1.7 /* Your value here */,
-        //     max_tokens:256 /* Your value here */,
-        //     // ... other parameters
-        //   };
-        //   break;
         case 'standard':
           modelConfig = {
             // Define parameters for standard mode
@@ -100,7 +105,9 @@ function App() {
       setOutputText(`Error: ${error.message}`);
     }
   };
-
+  const toggleMode = () => {
+    setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+  };
   const isModeActive = (selectedMode) => {
     return mode === selectedMode ? 'active' : '';
   };
@@ -112,9 +119,10 @@ function App() {
     document.execCommand('copy');
   };
   return (
-    <div className="App">
+    <div className={`App ${mode === 'dark' ? 'dark-mode' : ''}`}>
       <header className="App-header">
         <h1>Code Summarization</h1>
+        <button onClick={toggleMode}>{mode === 'light' ? 'Dark Mode' : 'Light Mode'}</button>
       </header>
       <main>
         <div className="mode-buttons">
@@ -123,14 +131,21 @@ function App() {
           <button className={isModeActive('creative')} onClick={() => handleModeChange('creative')}>Creative Mode</button>
         </div>
         <div className='Text'>
-          <div className="input-area">
-            <textarea
-              value={inputText}
-              onChange={handleInputChange}
-              placeholder="Enter the code to be summarized"
-              required
-            />
-          </div>
+        <div className="input-area">
+        <textarea
+          value={inputText}
+          onChange={handleInputChange}
+          placeholder="Enter Python code here"
+          required
+        />
+        {isError && (
+            <div className="error-card">
+              <p style={{ textAlign: 'center' }}>
+  Error: The input does not appear to be Python code.
+  </p>
+            </div>
+        )}
+      </div>
           {!isEmptyInput && (
         <div className="output-text">
           <textarea
