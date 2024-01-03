@@ -1,3 +1,5 @@
+/* General Styles */
+
 .App {
   font-family: 'Arial', sans-serif;
   color: #333;
@@ -6,76 +8,247 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start; /* Changed to flex-start to avoid vertical stretching */
+  justify-content: flex-start;
   height: 100vh;
-  background-color: #f5f5f5; /* Light gray background */
+  background-color: #f5f5f5;
 }
 
+/* Header Styles */
+
 .App-header {
-  background-color: #333;
-  color: white;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: #fff;
   width: 100%;
-  padding: 20px 0;
+  padding: 20px;
   text-align: center;
-  margin-bottom: 40px; /* Increased margin-bottom */
+  margin-bottom: 40px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #ddd;
+  font-family: 'Arial', sans-serif;
 }
+
+.App-header:hover {
+  background: linear-gradient(to right, #764ba2, #667eea);
+}
+
+/* Main Content Styles */
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%; /* Set width to limit the maximum size of content */
+  width: 90%;
 }
 
-.mode-buttons button {
-  margin-right: 10px; /* Space between buttons */
-  margin-bottom: 20px;
-}
-
-.mode-buttons button:last-child {
-  margin-right: 0; /* No margin for the last button */
-}
-
+/* Text Section Styles */
 .Text {
   display: flex;
-  flex-direction: column; /* Stack text areas vertically */
-  width: 100%; /* Full width */
-  margin-bottom: 20px; /* Space before the paraphrase button */
+  justify-content: space-around; /* Ensures even spacing around elements */
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  background: linear-gradient(to right, #f8f8f8, #e0e0e0);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.input-area,
-.output-text {
-  margin-bottom: 10px;
+/* Input and Output Textarea Styles */
+.input-area {
+  position: relative; /* Position relative to allow absolute positioning inside */
 }
 
-.input-area textarea,
-.output-text textarea {
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Subtle shadow for depth */
-  width: calc(100% - 20px); /* Full width minus padding */
-  margin: 0; /* Reset margin */
-  height: 150px; /* Fixed height */
-  padding: 15px; /* More padding inside text areas */
+.input-area textarea {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 900px; /* Adjusted width for more space */
+  margin: 10px; /* Adjusted margin for consistent spacing */
+  height: 300px;
+  padding: 15px;
+  padding-left: 35px; /* Make room for line numbers */
   resize: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: box-shadow 0.3s;
+  font-family: 'Courier New', monospace; /* Monospaced font for code */
+  font-size: 25px; /* Typically code editors use smaller font sizes */
+  color: #333;
+  background-color: #f7f7f7; /* Soft background color */
+  line-height: 1.5;
+  white-space: pre; /* For code formatting */
+  overflow-x: auto; /* Allows horizontal scrolling */
+  position: relative;
+  tab-size: 4; /* Standard tab size for Python code */
 }
 
-button {
-  background-color: #4CAF50;
+/* Line Numbers for the Input Area */
+.input-area::before {
+  content: attr(data-lines); /* Use an attribute for line numbers */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px; /* Width for line numbers */
+  padding: 15px 5px;
+  text-align: right;
+  background-color: #eee; /* Line number column background */
+  color: #999; /* Line number color */
+  border-right: 1px solid #ddd;
+  height: 100%;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+  overflow: hidden;
+}
+
+/* Scrollbar Styles (Optional) */
+.input-area textarea::-webkit-scrollbar {
+  width: 10px;
+}
+
+.input-area textarea::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 10px;
+}
+
+.input-area textarea::-webkit-scrollbar-track {
+  background-color: #efefef;
+}
+.output-text textarea {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Adjusted width for more space */
+  margin: 10px; /* Adjusted margin for consistent spacing */
+  height: 300px;
+  padding: 15px;
+  resize: none;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  transition: box-shadow 0.3s;
+  font-family: 'Courier New', monospace;
+  color: #333;
+  background-color: #f5f5f5;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  position: relative;
+}
+
+.input-area textarea::placeholder {
+  color: #aaa;
+}
+
+.input-area textarea:focus {
+  outline: none;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.input-area textarea::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background-color: #007acc;
+  top: 0;
+  left: 15px;
+  opacity: 0.7;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Error Card Styles */
+
+.error-card {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Output Textarea Placeholder and Read-only Styles */
+
+.output-text textarea::placeholder {
+  color: #aaa;
+}
+
+.output-text textarea:read-only {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
+/* Mode Buttons Styles */
+
+.mode-buttons button {
+  margin-right: 10px;
+  margin-bottom: 20px;
+  background-color: #667eea;
   color: white;
   padding: 10px 20px;
-  margin: 0; /* Reset margin */
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s, transform 0.3s; /* Transition for smooth color change */
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-button:hover {
-  background-color: #45a049;
-  transform: translateY(-2px); /* Slight lift on hover */
+.mode-buttons button:last-child {
+  margin-right: 0;
 }
 
-button.active {
-  background-color: #035907;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* More pronounced shadow for the active button */
+.mode-buttons button:hover {
+  background-color: #5a67d8;
+  transform: translateY(-2px);
+}
+
+.mode-buttons button.active {
+  background-color: #4a4fbc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Button Handler Styles */
+
+.Button-handler {
+  display: inline-block;
+  padding-top: 20px;
+  background: linear-gradient(to right, #f8f8f8, #e0e0e0);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.Button-handler button {
+  padding-left: 30px;
+  background-color: #ff6b6b;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.Button-handler button:hover {
+  background-color: #f15959;
+  transform: translateY(-2px);
+}
+
+.Button-handler button.active {
+  background-color: #d14747;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+/* Adjustments for Responsive Design (Optional) */
+
+@media (max-width: 768px) {
+  .input-area textarea,
+  .output-text textarea {
+    width: calc(100% - 40px); /* Allow the textareas to fill the space */
+    margin: 10px 20px; /* Adjusted margin for consistent spacing */
+  }
+
+  .Text {
+    flex-direction: column; /* Stack elements on smaller screens */
+    align-items: center;
+  }
 }
