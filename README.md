@@ -1,70 +1,80 @@
-# Getting Started with Create React App
+# Code Summarization App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduction
 
-## Available Scripts
+This application is designed to provide an intuitive and efficient way to summarize Python code using a custom fine-tuned GPT-3.5 Turbo model. It's an ideal tool for developers, educators, and anyone interested in understanding or documenting code more effectively.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Code Input**: Allows users to input Python code for summarization.
+- **Summarization Modes**: Offers different modes like Standard, Fluent, and Creative for varied types of summaries.
+- **Dark/Light Mode**: Toggle between dark and light themes for user comfort.
+- **Copy to Clipboard**: Easily copy the summarized code to the clipboard.
+- **Error Detection**: Detects when the input is not Python code and alerts the user.
+- **Responsive Design**: Adapts to different screen sizes for a seamless experience on desktops and mobile devices.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Getting Started
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Prerequisites
 
-### `npm test`
+- Node.js
+- npm or yarn package manager
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Installation
 
-### `npm run build`
+1. Clone the repository:
+   ```bash
+   git clone [repository-link]
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
+   ```bash
+   cd code-summarization-app
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+4. Create a `.env` file in the root directory and add your OpenAI API key:
+   ```env
+   REACT_APP_OPENAI_API_KEY=your_api_key_here
+   ```
 
-### `npm run eject`
+5. Start the application:
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application should now be running on `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Input Python Code**: In the input area, paste or write the Python code you wish to summarize.
+2. **Choose Mode**: Select the summarization mode (Standard, Fluent, Creative) according to your need.
+3. **Generate Summary**: Click on 'Generate Summary' to get the summarized version of the code.
+4. **Copy or Reset**: Use the 'Copy Summary' button to copy the text to the clipboard or 'Reset' to clear the fields.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Contributing
 
-## Learn More
+Contributions to improve the application are welcome. Please follow these steps:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. Fork the repository.
+2. Create a new branch: `git checkout -b new-feature`.
+3. Make your changes and commit them: `git commit -m 'Add some feature'`.
+4. Push to the branch: `git push origin new-feature`.
+5. Submit a pull request.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## License
 
-### Code Splitting
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Acknowledgements
 
-### Analyzing the Bundle Size
+- OpenAI for providing the GPT-3.5 Turbo model.
+- React community for the excellent framework.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+---
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Note: Replace `[repository-link]` with the actual link to the GitHub repository where this project is hosted.
